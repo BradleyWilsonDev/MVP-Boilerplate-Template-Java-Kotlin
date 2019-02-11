@@ -1,0 +1,55 @@
+<template format="4"
+    revision="1"
+    name="MVP Boilerplate"
+    description="Creates a new MVP Screen - Activity, Presenter and Contract">
+    
+    <category value="Other" />
+    
+    <parameter id="className"
+    name="Activity name"
+    type="string"
+    constraints="class|unique|nonempty"
+    default="DefaultActivity"
+    help="The activity you'd like to utilise MVP" />
+    
+    <parameter
+    id="isLauncher"
+    name="Launcher Activity"
+    type="boolean"
+    default="false"
+    help="If true, this activity will have a CATEGORY_LAUNCHER intent filter, making it visible in the launcher" />
+    
+    <parameter id="layoutName"
+    name="Layout Name"
+    type="string"
+    constraints="layout|unique|nonempty"
+    suggest="${activityToLayout(className)}"
+    default="activity_default"
+    help="The name of the layout to create for the activity"/>
+    
+    <parameter id="folderName"
+    name="Folder Name"
+    type="string"
+    constraints="layout|unique|nonempty"
+    default="demo"
+    help="Activity root folder"/>
+    
+    <parameter
+    id="generateBaseClasses"
+    name="Auto generate base classes"
+    type="boolean"
+    default="false"
+    help="If true, this template will generate the Base Contract dependencies" />
+    
+    <parameter
+    id="baseFolderName"
+    name="Base folder name"
+    type="string"
+    suggest="base"
+    constraints="nonempty|unique"
+    visibility="generateBaseClasses"
+    help="Base class folder name" />
+    
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+</template>
